@@ -20,15 +20,15 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-        working-directory: ./client # Specify the client directory
+        working-directory: ./Client # Specify the client directory
 
       - name: Build
         run: npm run build
-        working-directory: ./client # Specify the client directory
+        working-directory: ./Client # Specify the client directory
 
       - name: Test
         run: npm test
-        working-directory: ./client # Specify the client directory
+        working-directory: ./Client # Specify the client directory
 
       - name: Set up Firebase
         uses: w9jds/firebase-action@master
