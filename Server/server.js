@@ -2,9 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv").config();
 const connectDB = require("./utils/db");
-const mongoose = require('mongoose');
-const clinicRoutes = require('./routes/clinicRoutes');
-const doctorRoutes = require('./routes/doctorRoutes')
+const doctorRoutes = require("./routes/doctorRoutes");
+const appointmentRoutes = require("./routes/appointmentRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 9000;
@@ -23,7 +23,8 @@ app.use(express.json());
 
 // Use doctor routes
 app.use("/api/doctors", doctorRoutes);
-app.use('/api/clinics', clinicRoutes);
+app.use("/api/appointments", appointmentRoutes);
+app.use("/api/users", userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
