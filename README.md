@@ -16,7 +16,7 @@ This web-based project allows users to conveniently make appointments with docto
 ### Installation
 
 1. Clone the repository:
-   git clone https://github.com/yourusername/online-doctor-appointment.git
+   git clone [https://github.com/yourusername/online-doctor-appointment.git](https://github.com/Gaurav23V/HackOdisha_3.O.git)
 2. Navigate to the project directory:
    cd online-doctor-appointment   
 3. Install server dependencies:
