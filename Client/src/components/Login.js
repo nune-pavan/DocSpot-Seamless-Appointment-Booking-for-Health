@@ -30,7 +30,7 @@ const [password, setPassword] = useState("")
             Doc<span className="text-webnavyblue">Spot</span>
           </h1>
         </div>
-        <div className="flex flex-col items-center pt-6">
+        <div className="flex flex-col items-center pt-3">
           <p className="font-IBM text-2xl">
             Your Health, Your Time, Your Doctor
           </p>
