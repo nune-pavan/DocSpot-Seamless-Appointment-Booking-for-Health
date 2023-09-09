@@ -88,7 +88,12 @@ const DoctorController = {
   },
   deleteDoctor: async (req, res) => {
     try {
-      await Doctor.findByIdAndDelete(req.params.id);
+      const doctor = await Doctor.findById(req.params.id);
+
+      if (!doctor) {
+        return res.status(404).json({ error: "Doctor not found" });
+      }
+      await Doctor.deleteOne();
       res.json({ message: "Doctor deleted successfully" });
     } catch (error) {
       res.status(500).json({ error: "Server error" });
