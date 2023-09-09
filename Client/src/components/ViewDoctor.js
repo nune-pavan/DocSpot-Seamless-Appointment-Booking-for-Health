@@ -1,11 +1,11 @@
 import React from 'react'
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
-import Header from './Header';
+import Navbar from './Navbar';
 const ViewDoctor = () => {
   return (
     <>
-    <Header/>
+    <Navbar/>
     <div className="w-full flex flex-col items-center bg-webgrey">
     <div className="w-5/6 flex flex-col">
     <div className='flex flex-row'>
