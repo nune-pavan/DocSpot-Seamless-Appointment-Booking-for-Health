@@ -10,20 +10,9 @@ import Link from "@mui/material/Link";
 import Footer from "./Footer";
 
 const Login = ({ addParticipantsProp }) => {
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
+const [email, setEmail] = useState("")
+const [password, setPassword] = useState("")
 
-  const handleOnChange = (e) => {
-    const { name, value } = e.target;
-    setData((preve) => {
-      return {
-        ...preve,
-        [name]: value,
-      };
-    });
-  };
 
   // const addParticipant = (_) => {
   //   addParticipantsProp({
@@ -57,8 +46,8 @@ const Login = ({ addParticipantsProp }) => {
               label="Email"
               variant="outlined"
               required
-              value={data.email}
-              onChange={handleOnChange}
+              value={email}
+              onChange={e=>setEmail(e.target.value)}
             />
             <TextField
               type="password"
@@ -67,8 +56,8 @@ const Login = ({ addParticipantsProp }) => {
               label="Password"
               variant="outlined"
               required
-              value={data.password}
-              onChange={handleOnChange}
+              value={password}
+              onChange={e=>setPassword(e.target.value)}
             />
             <LoginButton variant="contained">Log in</LoginButton>
             <Link
@@ -81,7 +70,14 @@ const Login = ({ addParticipantsProp }) => {
             </Link>
             <Divider>OR</Divider>
             <CreateAccountButton variant="contained" className="self-center">
+            <Link
+              href="/signup"
+              underline="none"
+              className="self-center text-webgrey"
+              color="inherit"
+            >
               Create Account
+            </Link>
             </CreateAccountButton>
           </form>
         </div>

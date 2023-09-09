@@ -8,6 +8,8 @@ import reportWebVitals from "./reportWebVitals";
 // // Import your route components here
 import Home from "./components/Home";
 import Login from "./components/Login";
+import Signup from "./components/Signup";
+import ViewDoctor from "./components/ViewDoctor";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,7 +19,8 @@ root.render(
         <Route index element={<Home />} />
         {/* add routes here -- yogit */}
         <Route exact path="/login" element={<Login />} />
-
+        <Route path="/signup" exact element={<Signup />} />
+        <Route path="/viewdoctor" exact element={<ViewDoctor/>} />
       </Route>
     </Routes>
   </Router>
