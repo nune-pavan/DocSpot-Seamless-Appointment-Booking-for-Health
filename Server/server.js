@@ -7,6 +7,12 @@ const doctorRoutes = require("./routes/doctorRoutes");
 const app = express();
 const PORT = process.env.PORT || 9000;
 
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+
 // Connect to MongoDB
 connectDB();
 
