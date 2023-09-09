@@ -4,6 +4,9 @@ const UserController = {
   getAllUsers: async (req, res) => {
     try {
       const users = await User.find();
+      if (!users) {
+        return res.status(404).json({ error: "No users found" });
+      }
       res.json(users);
     } catch (error) {
       res.status(500).json({ error: "Server error" });
@@ -12,6 +15,9 @@ const UserController = {
   getUserById: async (req, res) => {
     try {
       const user = await User.findById(req.params.id);
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
       res.json(user);
     } catch (error) {
       res.status(500).json({ error: "Server error" });
@@ -86,6 +92,11 @@ const UserController = {
   },
   deleteUser: async (req, res) => {
     try {
+      const user = await User.findById(req.params.id);
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
       await User.findByIdAndDelete(req.params.id);
       res.json({ message: "User deleted successfully" });
     } catch (error) {
