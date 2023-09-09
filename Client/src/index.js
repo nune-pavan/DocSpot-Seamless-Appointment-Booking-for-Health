@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 // // Import your route components here
 import Home from "./components/Home";
+import Login from "./components/Login";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,6 +16,8 @@ root.render(
       <Route exact path="/" element={<App />}>
         <Route index element={<Home />} />
         {/* add routes here -- yogit */}
+        <Route exact path="/login" element={<Login />} />
+
       </Route>
     </Routes>
   </Router>
