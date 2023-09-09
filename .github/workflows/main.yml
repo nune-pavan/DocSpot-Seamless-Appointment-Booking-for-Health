@@ -18,7 +18,6 @@ jobs:
         with:
           node-version: '16'
 
-
       - name: Install Dependencies
         run: npm install
 
@@ -27,3 +26,21 @@ jobs:
 
       - name: Test
         run: npm test
+
+      - name: Set up Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only functions
+
+      - name: Deploy to Firebase Hosting
+        run: npm run deploy:hosting
+
+      - name: Set up MongoDB
+        uses: docker://mongo:latest
+
+      - name: Set up Express and Node
+        run: |
+          cd server
+          npm install
+          npm run build
+          npm start
