@@ -15,15 +15,20 @@ const doctorSchema = new mongoose.Schema({
   },
   email: {
     type: String,
+    required: true,
     default: "",
+    unique: true,
     trim: true,
     lowercase: true,
-    unique: true,
+    match: [/^\S+@\S+\.\S+$/, "Please enter a valid email address"],
   },
   phoneNo: {
     type: String,
+    required: true,
     default: "",
+    unique: true,
     trim: true,
+    match: [/^\d{10}$/, "Please enter a valid 10-digit phone number"],
   },
   address: {
     type: String,
