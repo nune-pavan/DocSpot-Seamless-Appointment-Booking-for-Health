@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import Navbar from "./Navbar";
@@ -15,13 +15,35 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import Footer from "./Footer";
+import { useParams } from "react-router-dom";
 
 const ViewDoctor = () => {
+  const [doctorData, setDoctorData] = useState(null);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchDoctorData = async () => {
+      try {
+        const response = await fetch(`http://localhost:9000/api/doctors/${id}`);
+        const data = await response.json();
+        setDoctorData(data);
+      } catch (error) {
+        console.error("Error fetching doctor data:", error);
+      }
+    };
+
+    fetchDoctorData();
+  }, [id]);
+
   const [alignment, setAlignment] = useState("10:00 AM - 1:00 PM");
 
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
   };
+
+  if (!doctorData) {
+    return <div>Loading...</div>; // You can show a loading state while fetching data
+  }
 
   const ratingValue = 4.4; // Replace with the actual rating value
   return (
@@ -38,17 +60,15 @@ const ViewDoctor = () => {
               </div>
               <div className="flex items-center gap-4 my-2">
                 <EmailIcon />
-                <p className="text-webslate">drtanishqgupta@gmail.com</p>
+                <p className="text-webslate">{doctorData.email}</p>
               </div>
               <div className="flex items-center gap-4 my-2">
                 <CallIcon />
-                <p className="text-webslate">+91 76897 56789</p>
+                <p className="text-webslate">{doctorData.phoneNo}</p>
               </div>
               <div className="flex items-center gap-4 my-2">
                 <LocationOnIcon />
-                <p className="text-webslate">
-                  HP world Showroom, Jaipur, Rajasthan,302002
-                </p>
+                <p className="text-webslate">{doctorData.address}</p>
               </div>
               <div className="flex items-center gap-4 my-2">
                 <SchoolIcon />
@@ -60,10 +80,10 @@ const ViewDoctor = () => {
           <div className="w-2/3">
             <div className="mb-2">
               <p className="text-webred font-regular font-IBM text-lg">
-                Currently Available
+                {doctorData.isAvailable}
               </p>
               <h1 className="text-5xl font-inter font-black">
-                Dr. Tanishq Gupta
+                {doctorData.name}
               </h1>
             </div>
             <div className="my-4">
@@ -74,7 +94,7 @@ const ViewDoctor = () => {
                 <p className="self-center">{ratingValue}</p>
                 <Rating
                   name="doctor-rating"
-                  value={ratingValue}
+                  value={doctorData.rating}
                   precision={0.1} // Allows half-star ratings
                   readOnly // To make it read-only
                   size="small" // You can adjust the size
@@ -92,9 +112,11 @@ const ViewDoctor = () => {
             </div>
             <div className="my-2">
               <p className="font-semibold text-webslate font-IBM text-lg">
-                Fees -
+                Fees
               </p>
-              <p className="text-webslate font-IBM text-lg">₹ 700</p>
+              <p className="text-webslate font-IBM text-lg">
+                ₹ {doctorData.fees}
+              </p>
             </div>
             <div className="my-2">
               <p className="text-webred font-regular font-IBM text-lg">
@@ -156,7 +178,7 @@ const ViewDoctor = () => {
 
 const BookButton = styled(Button)(({ theme }) => ({
   backgroundColor: "#D90429",
-  borderRadius:"15px",
+  borderRadius: "15px",
   "&:hover": {
     backgroundColor: "#8D99AE",
   },
@@ -167,8 +189,8 @@ const BookButton = styled(Button)(({ theme }) => ({
   fontFamily: "IBM Plex Sans",
   paddingTop: "9.5px",
   paddingBottom: "9.5px",
-  paddingLeft:"1.4rem",
-  paddingRight:"1.4rem",
+  paddingLeft: "1.4rem",
+  paddingRight: "1.4rem",
   fontSize: "1rem",
 }));
 

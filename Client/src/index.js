@@ -9,7 +9,7 @@ import reportWebVitals from "./reportWebVitals";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import ViewDoctor from "./components/ViewDoctor";
+import ViewDoctor from "./components/viewDoctor";
 import ViewPatient from "./components/viewPatient";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -21,8 +21,8 @@ root.render(
         {/* add routes here -- yogit */}
         <Route exact path="/login" element={<Login />} />
         <Route path="/signup" exact element={<Signup />} />
-        <Route path="/viewdoctor" exact element={<ViewDoctor />} />
-        <Route path="/viewpatient" exact element={<ViewPatient />} />
+        <Route path="/viewdoctor/:id" exact element={<ViewDoctor />} />
+        <Route path="/viewpatient/:id" exact element={<ViewPatient />} />
       </Route>
     </Routes>
   </Router>

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import Navbar from "./Navbar";
@@ -11,6 +12,29 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SchoolIcon from "@mui/icons-material/School";
 
 const ViewPatient = () => {
+  const [patientData, setPatientData] = useState(null);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchPatientData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:9000/api/patients/${id}`
+        );
+        const data = await response.json();
+        setPatientData(data);
+      } catch (error) {
+        console.error("Error fetching patient data:", error);
+      }
+    };
+
+    fetchPatientData();
+  }, [id]);
+
+  if (!patientData) {
+    return <div>Loading...</div>; // You can show a loading state while fetching data
+  }
+
   return (
     <div className="w-full">
       <Navbar />
@@ -25,17 +49,15 @@ const ViewPatient = () => {
               </div>
               <div className="flex items-center gap-4 my-2">
                 <EmailIcon />
-                <p className="text-webslate">manishpaul@gmail.com</p>
+                <p className="text-webslate">{patientData.email}</p>
               </div>
               <div className="flex items-center gap-4 my-2">
                 <CallIcon />
-                <p className="text-webslate">+91 76897 56789</p>
+                <p className="text-webslate">{patientData.phoneNo}</p>
               </div>
               <div className="flex items-center gap-4 my-2">
                 <LocationOnIcon />
-                <p className="text-webslate">
-                  IIIT Kota, RIICO Industrial area, Kota, Rajasthan, 305202
-                </p>
+                <p className="text-webslate">{patientData.location}</p>
               </div>
               <div className="flex items-center gap-4 my-2">
                 <SchoolIcon />
@@ -48,7 +70,9 @@ const ViewPatient = () => {
               <p className="text-webblue font-regular font-IBM text-lg">
                 Patient
               </p>
-              <h1 className="text-5xl font-inter font-black">Manish Paul</h1>
+              <h1 className="text-5xl font-inter font-black">
+                {patientData.name}
+              </h1>
             </div>
             <div className="my-4">
               <p className="font-semibold text-webslate font-IBM text-lg mb-2">

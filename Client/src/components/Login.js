@@ -42,9 +42,9 @@ const Login = ({ addParticipantsProp }) => {
         throw new Error("Invalid email or password");
       }
       if (userData.role === "doctor") {
-        navigate("/viewdoctor");
+        navigate(`/viewdoctor/${userData.id}`);
       } else if (userData.role === "patient") {
-        navigate("/viewpatient");
+        navigate(`/viewpatient/${userData.id}`);
       }
     } catch (error) {
       console.error("Error logging in:", error);
