@@ -37,6 +37,7 @@ const Login = ({ addParticipantsProp }) => {
       if (userRes.ok) {
         userData = await userRes.json();
       }
+      console.log(userData);
       if (!userData) {
         throw new Error("Invalid email or password");
       }
