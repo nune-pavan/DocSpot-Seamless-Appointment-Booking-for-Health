@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import Navbar from "./Navbar";
-import DocPic from "../assets/Docpic.jpg";
-import LanguageIcon from "@mui/icons-material/Language";
+import DocPic from "../assets/user-dummy.jpg";
 import EmailIcon from "@mui/icons-material/Email";
 import CallIcon from "@mui/icons-material/Call";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -35,6 +34,8 @@ const ViewDoctor = () => {
     fetchDoctorData();
   }, [id]);
 
+  console.log(doctorData);
+
   const [alignment, setAlignment] = useState("10:00 AM - 1:00 PM");
 
   const handleChange = (event, newAlignment) => {
@@ -59,7 +60,7 @@ const ViewDoctor = () => {
             />
             <div className="pt-8 text-webred2 text-md">
               <div className="flex items-center gap-4 my-2">
-                <LanguageIcon />
+                <SchoolIcon />
                 <p className="text-webslate">{doctorData.registrationNumber}</p>
               </div>
               <div className="flex items-center gap-4 my-2">

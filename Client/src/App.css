@@ -37,3 +37,7 @@
 .text-webslate {
     color: #454545;
 }
+
+.flex-card {
+    flex: 0 0 calc(25% - 1.2rem);
+}
