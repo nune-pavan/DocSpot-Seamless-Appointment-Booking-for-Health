@@ -2,9 +2,8 @@ import React from "react";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { Link } from "react-router-dom";
 import { Button, TextField } from "@mui/material";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import styled from "@emotion/styled";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 
 function Navbar() {
   return (
@@ -17,11 +16,7 @@ function Navbar() {
             </h1>
           </Link>
           <div className="flex gap-2 items-center">
-            <TextField
-              id="outlined-basic"
-              label="Search"
-              variant="outlined"
-            />
+            <TextField id="outlined-basic" label="Search" variant="outlined" />
             <RedButton>
               <SearchIcon />
             </RedButton>
@@ -45,7 +40,7 @@ const RedButton = styled(Button)(({ theme }) => ({
   fontFamily: "IBM Plex Sans",
   fontSize: "1rem",
   color: "white",
-  height: "48px"
+  height: "48px",
 }));
 
 export default Navbar;
