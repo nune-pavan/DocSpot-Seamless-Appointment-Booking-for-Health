@@ -67,9 +67,11 @@ const Login = ({ addParticipantsProp }) => {
     <div className="w-full flex flex-col items-center bg-webgrey">
       <div className="w-5/6 flex flex-col">
         <div className="py-2">
-          <h1 className="text-5xl font-inter font-black text-webred">
-            Doc<span className="text-webnavyblue">Spot</span>
-          </h1>
+          <Link to="/">
+            <h1 className="text-5xl font-inter font-black text-webred">
+              Doc<span className="text-webnavyblue">Spot</span>
+            </h1>
+          </Link>
         </div>
         <div className="flex flex-col items-center pt-3">
           <p className="font-IBM text-2xl">

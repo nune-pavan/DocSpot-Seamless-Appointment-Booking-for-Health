@@ -106,9 +106,11 @@ const Signup = () => {
     <div className="w-full flex flex-col items-center bg-webgrey">
       <div className="w-5/6 flex flex-col">
         <div className="py-2">
-          <h1 className="text-5xl font-inter font-black text-webred">
-            Doc<span className="text-webnavyblue">Spot</span>
-          </h1>
+          <Link to="/">
+            <h1 className="text-5xl font-inter font-black text-webred">
+              Doc<span className="text-webnavyblue">Spot</span>
+            </h1>
+          </Link>
         </div>
         <div className="flex flex-col items-center pt-3">
           <h2 className="font-IBM text-3xl font-medium">Create Account</h2>
