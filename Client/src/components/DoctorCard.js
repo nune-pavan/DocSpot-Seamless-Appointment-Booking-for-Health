@@ -21,7 +21,11 @@ function DoctorCard({
   return (
     <div className="w-1/2 sm:w-1/2 md:w-1/3 lg:w-1/5 relative my-3 rounded-lg cursor-pointer flex-card bg-white p-4">
       <Link to={`/viewdoctor/${id}`}>
-        <img src={DocPic} alt="{name}" className="w-full rounded-lg " />
+        <img
+          src={profilePicture || DocPic}
+          alt="{name}"
+          className="w-full rounded-lg "
+        />
       </Link>
       <div className="flex flex-col py-4">
         <div className="flex justify-between">
