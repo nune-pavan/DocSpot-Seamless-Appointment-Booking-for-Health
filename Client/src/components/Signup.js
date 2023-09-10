@@ -48,7 +48,7 @@ const Signup = () => {
       );
 
       if (userResponse.ok) {
-        const { _id } = await userResponse.json();
+        const { user } = await userResponse.json();
 
         // Step 2: Store additional data in the appropriate collection based on the role
         if (role === "doctor") {
@@ -59,7 +59,7 @@ const Signup = () => {
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify({ _id, name, email }),
+              body: JSON.stringify({ _id: user._id, name, email }),
             }
           );
 
@@ -79,7 +79,7 @@ const Signup = () => {
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify({ _id, name, email }),
+              body: JSON.stringify({ _id: user._id, name, email }),
             }
           );
 
