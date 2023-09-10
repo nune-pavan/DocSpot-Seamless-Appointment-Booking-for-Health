@@ -90,6 +90,8 @@ To get started with this project, follow these steps:
 
 - Doctor Availability: Doctors can update their availability status by signing in or signing out of the website.
 
+Technologies
+
     MongoDB: Database management
     Express: Backend server framework
     React: Frontend user interface
