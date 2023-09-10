@@ -100,7 +100,7 @@ const ViewDoctor = () => {
               <p className="text-webred font-regular font-IBM text-lg">
                 Choose Slot-
               </p>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 my-3">
                 <p className="font-semibold text-webslate font-IBM text-lg">
                   Date -
                 </p>
@@ -108,7 +108,7 @@ const ViewDoctor = () => {
                   <DatePicker />
                 </LocalizationProvider>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 my-3">
                 <p className="font-semibold text-webslate font-IBM text-lg">
                   Time -
                 </p>
@@ -156,6 +156,7 @@ const ViewDoctor = () => {
 
 const BookButton = styled(Button)(({ theme }) => ({
   backgroundColor: "#D90429",
+  borderRadius:"15px",
   "&:hover": {
     backgroundColor: "#8D99AE",
   },
@@ -164,8 +165,10 @@ const BookButton = styled(Button)(({ theme }) => ({
   },
   textTransform: "none",
   fontFamily: "IBM Plex Sans",
-  paddingTop: "1rem",
-  paddingBottom: "1rem",
+  paddingTop: "9.5px",
+  paddingBottom: "9.5px",
+  paddingLeft:"1.4rem",
+  paddingRight:"1.4rem",
   fontSize: "1rem",
 }));
 
