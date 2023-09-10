@@ -9,7 +9,7 @@ import reportWebVitals from "./reportWebVitals";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import ViewDoctor from "./components/viewDoctor";
+import ViewDoctor from "./components/ViewDoctor";
 import ViewPatient from "./components/viewPatient";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
