@@ -4,6 +4,9 @@ const DoctorController = {
   getAllDoctors: async (req, res) => {
     try {
       const doctors = await Doctor.find();
+      if (doctors.length === 0) {
+        return res.status(404).json({ error: "No doctors found" });
+      }
       res.json(doctors);
     } catch (error) {
       res.status(500).json({ error: "Server error" });
@@ -12,6 +15,9 @@ const DoctorController = {
   getDoctorById: async (req, res) => {
     try {
       const doctor = await Doctor.findById(req.params.id);
+      if (!doctor) {
+        return res.status(404).json({ error: "Doctor not found" });
+      }
       res.json(doctor);
     } catch (error) {
       res.status(500).json({ error: "Server error" });
@@ -27,6 +33,7 @@ const DoctorController = {
       const doctor = new Doctor({
         ...doctorData,
       });
+      console.log(doctor);
       await doctor.save();
       res.json(doctor);
     } catch (error) {
@@ -88,7 +95,12 @@ const DoctorController = {
   },
   deleteDoctor: async (req, res) => {
     try {
-      await Doctor.findByIdAndDelete(req.params.id);
+      const doctor = await Doctor.findById(req.params.id);
+
+      if (!doctor) {
+        return res.status(404).json({ error: "Doctor not found" });
+      }
+      await Doctor.deleteOne();
       res.json({ message: "Doctor deleted successfully" });
     } catch (error) {
       res.status(500).json({ error: "Server error" });
