@@ -13,12 +13,11 @@ function DoctorCard({
   availableHours,
   profilePicture,
 }) {
+  const [alignment, setAlignment] = useState("10:00 AM - 1:00 PM");
 
-    const [alignment, setAlignment] = useState("10:00 AM - 1:00 PM");
-
-    const handleChange = (event, newAlignment) => {
-      setAlignment(newAlignment);
-    };
+  const handleChange = (event, newAlignment) => {
+    setAlignment(newAlignment);
+  };
   return (
     <div className="w-1/2 sm:w-1/2 md:w-1/3 lg:w-1/5 relative my-3 rounded-lg cursor-pointer flex-card bg-white p-4">
       <Link to={`/viewdoctor/${id}`}>
@@ -32,7 +31,7 @@ function DoctorCard({
               {specialization[0]}
             </p>
             <div className="flex items-center gap-1">
-              <p className="self-center">{rating}</p>
+              <p className="self-center">{rating.$numberDecimal}</p>
               <Rating
                 name="doctor-rating"
                 value={rating}
@@ -56,19 +55,19 @@ function DoctorCard({
             {"Available Hours -"}
           </p>
           <ToggleButtonGroup
-                  color="primary"
-                  value={alignment}
-                  exclusive
-                  onChange={handleChange}
-                  aria-label="Slot"
-                >
-                  <ToggleButton value="10:00AM - 1:00PM">
-                    10:00AM - 1:00PM
-                  </ToggleButton>
-                  <ToggleButton value="5:00PM - 10:00PM">
-                    5:00PM - 10:00PM
-                  </ToggleButton>
-                </ToggleButtonGroup>
+            color="primary"
+            value={alignment}
+            exclusive
+            onChange={handleChange}
+            aria-label="Slot"
+          >
+            <ToggleButton value="10:00AM - 1:00PM">
+              10:00AM - 1:00PM
+            </ToggleButton>
+            <ToggleButton value="5:00PM - 10:00PM">
+              5:00PM - 10:00PM
+            </ToggleButton>
+          </ToggleButtonGroup>
         </div>
       </div>
     </div>

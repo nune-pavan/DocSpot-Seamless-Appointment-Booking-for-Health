@@ -10,12 +10,12 @@ function Home() {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const response = await fetch('http://localhost:9000/api/doctors');
+        const response = await fetch("http://localhost:9000/api/doctors");
         const data = await response.json();
         setDoctors(data);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching doctor data:', error);
+        console.error("Error fetching doctor data:", error);
       }
     };
 
@@ -36,17 +36,16 @@ function Home() {
           </h1>
           <div className="w-full flex flex-wrap gap-6">
             {doctors.map((doctor) => (
-              <DoctorCard 
-                key = {doctor._id}
-                id = {doctor._id}
-                name = {doctor.name}
-                specialization= {doctor.specialization}
-                rating = {doctor.rating}
+              <DoctorCard
+                key={doctor._id}
+                id={doctor._id}
+                name={doctor.name}
+                specialization={doctor.specialization}
+                rating={doctor.rating.$numberDecimal}
                 availableHours={doctor.availableHours}
                 profilePicture={doctor.profilePicture}
               />
             ))}
-            
           </div>
         </div>
       </div>

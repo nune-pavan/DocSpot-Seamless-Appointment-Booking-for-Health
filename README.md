@@ -1,64 +1,101 @@
-# Online Doctor Appointment System
+<p align="center">
+  <img src="Screenshot 2023-09-10 173639.png" alt="Project Logo">
+</p>
 
-This web-based project allows users to conveniently make appointments with doctors in their vicinity. Users can register as either a doctor or a patient. Upon registration, the browser will access the user's location and display a list of available doctors nearby. Users can also filter doctors based on specific fields of expertise. Doctors who are signed in will be marked as currently available.
+<h1 align="center">Online Doctor Appointment System</h1>
 
-## Technologies Used
-- MongoDB
-- Express
-- React
+<p align="center">
+  A web-based platform for scheduling appointments with doctors near you.
+</p>
 
-## Getting Started
+## Table of Contents
 
-### Prerequisites
-- Node.js and npm installed
-- MongoDB installed and running
+- [Introduction](#introduction)
+- [Features](#features)
+- [Demo](#demo)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Technologies](#technologies)
+- [Contributing](#contributing)
+- [License](#license)
 
-### Installation
+## Introduction
 
-1. Clone the repository:
-   git clone [https://github.com/yourusername/online-doctor-appointment.git](https://github.com/Gaurav23V/HackOdisha_3.O.git)
-2. Navigate to the project directory:
-   cd online-doctor-appointment   
-3. Install server dependencies:
-   cd Server
-   npm install
-4. Install client dependencies:
-   cd Client
-   npm install
-5. Start the server:
-   cd Server
-   node express.js
-6. Start the client:
-   cd client
-   npm start
+The Online Doctor Appointment System is a web-based platform that allows users to easily schedule appointments with doctors in their vicinity. Whether you're a patient looking for medical assistance or a doctor looking to manage your appointments, this system simplifies the process for both.
 
-7. Open a web browser and go to `http://localhost:9000` to access the application.
+Key features include:
 
--  <a href="https://f3bb9b0d.hackodisha-3-o.pages.dev/"> Live Demo of Client </a>
+- User and doctor registration
+- Location-based doctor search
+- Real-time availability status for doctors
+- Appointment scheduling with token numbers
+- Automatic token number reset after each time slot
 
 ## Features
 
-- User authentication and registration
-- Doctor authentication and registration
-- Geolocation-based doctor search
-- Filter doctors by specialty
-- Real-time availability status for doctors
-- Appointment scheduling with token system
+- **User Authentication**: Users can create accounts and log in as either patients or doctors.
+
+- **Location-Based Search**: The system utilizes the user's location to display nearby doctors. Users can also filter doctors by specific medical fields.
+
+- **Real-Time Availability**: Doctors who are currently signed in to the website are shown as available, making it easy for patients to find a doctor who can see them immediately.
+
+- **Appointment Scheduling**: Patients can schedule appointments with doctors by selecting available time slots. They receive a token number along with the scheduled time.
+
+- **Time Slot Management**: The system automatically resets the available token numbers after each time slot, ensuring accurate appointment scheduling.
+
+## Demo
+
+<img src = "Patient Profile.png" alt = "Patient Profile">
+
+You can access a live demo of the project <a href = "#">here</a>.
+
+## Getting Started
+
+To get started with this project, follow these steps:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Gaurav23V/HackOdisha_3.O.git
+
+   ```
+
+2. Install dependencies in the client and server directories:
+
+   cd HACKODISHA_3.O/Client
+
+   npm install
+
+   cd ../Server
+
+   npm install
+
+3. Create a MongoDB database and update the configuration in server/config.js.
+
+4. Start the server:
+   cd Server
+   node server.js
+
+5. Access the web application at http://localhost:9000.
 
 ## Usage
 
-1. Create an account or sign in as a user or doctor.
-2. Based on your location, view a list of available doctors.
-3. Filter doctors by specialty if desired.
-4. Schedule an appointment with your chosen doctor.
-5. Receive a token number and appointment time.
+- Patient Registration: Patients can sign up for an account by providing their details and selecting "Patient" during registration.
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+- Doctor Registration: Doctors can sign up by providing their information and selecting "Doctor" during registration. They can set their availability status.
 
+- Searching for Doctors: Users can search for doctors based on their location and medical field.
 
-## Acknowledgements
-- Built with MongoDB, Express, and React
-- Special thanks to the contributors and the open-source community
+- Appointment Booking: Patients can book appointments with available doctors by selecting a time slot. They receive a token number for their appointment.
 
----
+- Doctor Availability: Doctors can update their availability status by signing in or signing out of the website.
+
+Technologies
+
+    MongoDB: Database management
+    Express: Backend server framework
+    React: Frontend user interface
+    Node.js: Backend runtime environment
+
+Contributing
+
