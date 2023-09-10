@@ -45,7 +45,14 @@ Key features include:
 
 ## Demo
 
-<img src = "Patient Profile.png" alt = "Patient Profile">
+| Image 1 | Image 2 |
+| ------- | ------- |
+| ![Image 1](Signup.png) | ![Image 2](Login.png) |
+
+| Image 3 | Image 4 |
+| ------- | ------- |
+| ![Image 3](Patient Profile.png) | ![Image 4](Doctor Profile.png) |
+
 
 You can access a live demo of the project <a href = "#">here</a>.
 
