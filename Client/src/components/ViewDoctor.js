@@ -45,8 +45,7 @@ const ViewDoctor = () => {
   if (!doctorData) {
     return <div>Loading...</div>; // You can show a loading state while fetching data
   }
-
-  const ratingValue = 4.4; // Replace with the actual rating value
+ 
   return (
     <div className="w-full">
       <Navbar />
