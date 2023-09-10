@@ -67,7 +67,7 @@ To get started with this project, follow these steps:
    npm install
 
    cd ../Server
-   
+
    npm install
 
 3. Create a MongoDB database and update the configuration in server/config.js.
@@ -78,19 +78,17 @@ To get started with this project, follow these steps:
 
 5. Access the web application at http://localhost:9000.
 
-Usage
+## Usage
 
-    Patient Registration: Patients can sign up for an account by providing their details and selecting "Patient" during registration.
+- Patient Registration: Patients can sign up for an account by providing their details and selecting "Patient" during registration.
 
-    Doctor Registration: Doctors can sign up by providing their information and selecting "Doctor" during registration. They can set their availability status.
+- Doctor Registration: Doctors can sign up by providing their information and selecting "Doctor" during registration. They can set their availability status.
 
-    Searching for Doctors: Users can search for doctors based on their location and medical field.
+- Searching for Doctors: Users can search for doctors based on their location and medical field.
 
-    Appointment Booking: Patients can book appointments with available doctors by selecting a time slot. They receive a token number for their appointment.
+- Appointment Booking: Patients can book appointments with available doctors by selecting a time slot. They receive a token number for their appointment.
 
-    Doctor Availability: Doctors can update their availability status by signing in or signing out of the website.
-
-Technologies
+- Doctor Availability: Doctors can update their availability status by signing in or signing out of the website.
 
     MongoDB: Database management
     Express: Backend server framework
