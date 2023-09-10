@@ -33,16 +33,20 @@ const doctorSchema = new mongoose.Schema({
     trim: true,
   },
   fees: {
-    type: Number,
+    type: mongoose.Types.Decimal128,
     default: 0,
   },
   rating: {
-    type: Number,
-    default: 0,
+    type: mongoose.Types.Decimal128,
+    default: 0.0,
   },
   numRating: {
     type: Number,
     default: 0,
+  },
+  about: {
+    type: String,
+    default: "",
   },
   education: {
     type: [String],

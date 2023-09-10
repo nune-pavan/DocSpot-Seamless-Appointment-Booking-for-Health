@@ -33,7 +33,6 @@ const DoctorController = {
       const doctor = new Doctor({
         ...doctorData,
       });
-      console.log(doctor);
       await doctor.save();
       res.json(doctor);
     } catch (error) {
