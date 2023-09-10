@@ -124,9 +124,23 @@ const ViewDoctor = () => {
               <p className="font-semibold text-webslate font-IBM text-lg">
                 Available Hours -
               </p>
+              <div>
+              </div>
               <ul className="text-webslate font-IBM text-md list-disc">
-                <li className="ml-5">10:00 AM - 1:00 PM</li>
-                <li className="ml-5">5:00 PM - 10:00 PM</li>
+                <li className="ml-5">
+                {doctorData.availableHours.slice(0, 1).map((hours, index) => (
+                  <p key={index} className="font-semibold text-webslate font-IBM text-lg">
+                    {hours}
+                  </p>
+                ))}
+                </li>
+                <li className="ml-5">
+                {doctorData.availableHours.slice(1, 2).map((hours, index) => (
+                  <p key={index} className="font-semibold text-webslate font-IBM text-lg">
+                    {hours}
+                  </p>
+                ))}
+                </li>
               </ul>
             </div>
             <div className="my-2">
