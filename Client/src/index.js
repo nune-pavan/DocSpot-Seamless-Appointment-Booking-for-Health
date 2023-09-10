@@ -18,7 +18,6 @@ root.render(
     <Routes>
       <Route exact path="/" element={<App />}>
         <Route index element={<Home />} />
-        {/* add routes here -- yogit */}
         <Route exact path="/login" element={<Login />} />
         <Route path="/signup" exact element={<Signup />} />
         <Route path="/viewdoctor/:id" exact element={<ViewDoctor />} />
