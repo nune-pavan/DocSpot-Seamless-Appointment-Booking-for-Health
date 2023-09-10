@@ -10,6 +10,7 @@ import SearchIcon from "@mui/icons-material/Search";
 function Home() {
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchDoctors = async () => {
@@ -22,7 +23,6 @@ function Home() {
         console.error("Error fetching doctor data:", error);
       }
     };
-
     fetchDoctors();
   }, []);
 
@@ -36,7 +36,14 @@ function Home() {
       <div className="w-full flex justify-center bg-webgrey pt-16">
         <div className="w-2/3 pb-10 pt-10">
           <div className="flex gap-2 justify-center items-center">
-            <TextField id="outlined-basic" label="Search" variant="outlined" className="w-1/2"/>
+            <TextField
+              id="outlined-basic"
+              label="Search"
+              variant="outlined"
+              className="w-1/2"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
             <RedButton>
               <SearchIcon />
             </RedButton>
@@ -45,17 +52,21 @@ function Home() {
             Doctors near you
           </h1>
           <div className="w-full flex flex-wrap gap-6">
-            {doctors.map((doctor) => (
-              <DoctorCard
-                key={doctor._id}
-                id={doctor._id}
-                name={doctor.name}
-                specialization={doctor.specialization}
-                rating={doctor.rating.$numberDecimal}
-                availableHours={doctor.availableHours}
-                profilePicture={doctor.profilePicture}
-              />
-            ))}
+            {doctors
+              .filter((doctor) =>
+                doctor.name.toLowerCase().includes(searchQuery.toLowerCase())
+              )
+              .map((doctor) => (
+                <DoctorCard
+                  key={doctor._id}
+                  id={doctor._id}
+                  name={doctor.name}
+                  specialization={doctor.specialization}
+                  rating={doctor.rating.$numberDecimal}
+                  availableHours={doctor.availableHours}
+                  profilePicture={doctor.profilePicture}
+                />
+              ))}
           </div>
         </div>
       </div>

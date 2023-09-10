@@ -43,6 +43,17 @@ const Login = ({ addParticipantsProp }) => {
         throw new Error("Invalid email or password");
       }
       if (userData.role === "doctor") {
+        try {
+          await fetch(`http://localhost:9000/api/doctors/${userData.id}/`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ isAvailable: true }), // Set isAvailable to true
+          });
+        } catch (error) {
+          console.error("Error updating 'isAvailable' property:", error);
+        }
         navigate(`/viewdoctor/${userData.id}`);
       } else if (userData.role === "patient") {
         navigate(`/viewpatient/${userData.id}`);

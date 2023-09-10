@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { Link } from "react-router-dom";
 
-
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   const handleShowMenu = () => {
