@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Screenshot 2023-09-10 173639.png" alt="Project Logo">
+  <img src="Screenshot 2023-09-10 182231.png" alt="Project Logo">
 </p>
 
 <h1 align="center">Online Doctor Appointment System</h1>
