@@ -61,10 +61,13 @@ To get started with this project, follow these steps:
    ```
 
 2. Install dependencies in the client and server directories:
+
    cd HACKODISHA_3.O/Client
+
    npm install
 
    cd ../Server
+   
    npm install
 
 3. Create a MongoDB database and update the configuration in server/config.js.
