@@ -36,8 +36,9 @@ const Login = ({ addParticipantsProp }) => {
       });
       if (userRes.ok) {
         userData = await userRes.json();
+        localStorage.setItem("id", userData.id);
+        localStorage.setItem("role", userData.role);
       }
-      console.log(userData);
       if (!userData) {
         throw new Error("Invalid email or password");
       }
