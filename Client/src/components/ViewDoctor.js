@@ -27,7 +27,7 @@ const ViewDoctor = () => {
   return (
     <div className="w-full">
       <Navbar />
-      <div className="w-full flex flex-col items-center bg-webgrey pt-32 pb-16">
+      <div className="w-full flex flex-col items-center bg-webgrey pt-28 pb-16">
         <div className="w-2/3 flex justify-center p-10 bg-white rounded-lg gap-8 shadow-lg">
           <div className="w-1/3 flex flex-col">
             <img src={DocPic} alt="Dr. Name" className="w-full rounded-lg" />
@@ -131,7 +131,7 @@ const ViewDoctor = () => {
               <BookButton variant="contained">Book Appointment</BookButton>
             </div>
             <div className="mt-4 mb-2">
-            <p className="font-semibold text-webslate font-IBM text-lg">
+              <p className="font-semibold text-webslate font-IBM text-lg">
                 About -
               </p>
               <p className="text-webslate font-IBM py-2 text-justify">

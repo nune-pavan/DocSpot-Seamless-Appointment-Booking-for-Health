@@ -10,6 +10,10 @@
     background-color: #EDF2F4;
 }
 
+.bg-webnavyblue {
+    background-color: #2B2D42;
+}
+
 .text-webred {
     color: #D90429;
 }
@@ -20,6 +24,10 @@
 
 .text-webnavyblue {
     color: #2B2D42;
+}
+
+.text-webblue {
+    color: #8D99AE;
 }
 
 .text-webgrey {
