@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Screenshot 2023-09-10 173639.png" alt="Project Logo">
+  <img src="Screenshot 2023-09-10 182231.png" alt="Project Logo">
 </p>
 
 <h1 align="center">Online Doctor Appointment System</h1>
@@ -45,7 +45,14 @@ Key features include:
 
 ## Demo
 
-<img src = "Patient Profile.png" alt = "Patient Profile">
+| SignUp Page | Login Page |
+| ------- | ------- |
+| ![Image 1](Signup.png) | ![Image 2](Login.png) |
+
+| Patient Profile | Doctor Profile |
+| ------- | ------- |
+| ![Image 3](PatientProfile.png) | ![Image 4](DoctorProfile.png) |
+
 
 You can access a live demo of the project <a href = "#">here</a>.
 

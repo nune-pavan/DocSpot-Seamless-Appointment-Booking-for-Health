@@ -93,7 +93,7 @@ const ViewPatient = () => {
                     Heart Specialist
                   </p>
                   <p className="text-white font-IBM mb-2 text-md">
-                    +91 76897 56789
+                    {patientData.phoneNo}
                   </p>
                 </div>
                 <div className="pt-4">
