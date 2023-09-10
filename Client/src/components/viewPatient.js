@@ -41,7 +41,11 @@ const ViewPatient = () => {
       <div className="w-full flex flex-col items-center bg-webgrey pt-28 pb-16">
         <div className="w-2/3 flex justify-center p-10 bg-white rounded-lg gap-8 shadow-lg">
           <div className="w-1/3 flex flex-col">
-            <img src={DocPic} alt="Dr. Name" className="w-full rounded-lg" />
+            <img
+              src={patientData.profilePicture || DocPic}
+              alt="Dr. Name"
+              className="w-full rounded-lg"
+            />
             <div className="pt-8 text-webblue text-md">
               <div className="flex items-center gap-4 my-2">
                 <LanguageIcon />
@@ -88,7 +92,7 @@ const ViewPatient = () => {
               <div className="flex flex-row justify-between ">
                 <div className="flex flex-col">
                   <h1 className="text-3xl mt-4 font-inter font-bold">
-                    Dr. Tanishq Gupta
+                    {patientData.name}
                   </h1>
                   <p className="text-white font-IBM text-lg">
                     Heart Specialist
@@ -120,16 +124,7 @@ const ViewPatient = () => {
                 About -
               </p>
               <p className="text-webslate font-IBM py-2 text-justify">
-                As a college student battling both asthma and lung cancer, my
-                journey has been marked by resilience and determination. While
-                asthma introduced me to the world of respiratory challenges at a
-                young age, my recent diagnosis of lung cancer has added an
-                unexpected twist to my life. Through it all, I'm fueled by a
-                relentless drive to overcome these obstacles, pursue my
-                education, and inspire others facing similar health battles. My
-                goal is not just survival, but to thrive and continue my
-                academic pursuits while raising awareness about lung health and
-                cancer prevention.
+                {patientData.about}
               </p>
             </div>
           </div>

@@ -16,6 +16,10 @@ const patientSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  about: {
+    type: String,
+    default: "",
+  },
   prescription: {
     type: [String],
     default: [],
