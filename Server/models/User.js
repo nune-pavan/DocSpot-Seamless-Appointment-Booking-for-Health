@@ -1,39 +1,22 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    default: "",
-  },
   email: {
     type: String,
     required: true,
-    default: "",
     unique: true,
     trim: true,
-    lowercase: true,
     match: [/^\S+@\S+\.\S+$/, "Please enter a valid email address"],
   },
-  phoneNo: {
+  password: {
     type: String,
     required: true,
-    default: "",
-    unique: true,
-    trim: true,
-    match: [/^\d{10}$/, "Please enter a valid 10-digit phone number"],
+    minlength: 6,
   },
-  prescription: {
-    type: [String],
-    default: [],
-  },
-  location: {
+  role: {
     type: String,
-    default: "",
-  },
-  appointments: {
-    type: [String],
-    default: [],
+    required: true,
+    enum: ["doctor", "patient"],
   },
 });
 
