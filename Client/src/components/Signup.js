@@ -110,7 +110,7 @@ const Signup = () => {
             Doc<span className="text-webnavyblue">Spot</span>
           </h1>
         </div>
-        <div className="flex flex-col items-center pt-3">
+        <div className="flex flex-col items-center pt-3 bg-red-300">
           <h2 className="font-IBM text-3xl font-medium">Create Account</h2>
           <p className="font-IBM text-lg">
             Join us in taking control of your healthcare journey.
