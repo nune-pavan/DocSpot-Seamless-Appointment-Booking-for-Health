@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
@@ -10,17 +10,46 @@ import Link from "@mui/material/Link";
 import Footer from "./Footer";
 
 const Login = ({ addParticipantsProp }) => {
-const [email, setEmail] = useState("")
-const [password, setPassword] = useState("")
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    if (id === "email") {
+      setEmail(value);
+    } else if (id === "password") {
+      setPassword(value);
+    }
+  };
 
-  // const addParticipant = (_) => {
-  //   addParticipantsProp({
-  //     id: new Date().getTime(),
-  //     email: email,
-  //     password: password,
-  //   });
-  // };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      let userData;
+      const userRes = await fetch("http://localhost:9000/api/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      if (userRes.ok) {
+        userData = await userRes.json();
+      }
+      console.log(userData);
+      if (!userData) {
+        throw new Error("Invalid email or password");
+      }
+      if (userData.role === "doctor") {
+        navigate("/viewdoctor");
+      } else if (userData.role === "patient") {
+        navigate("/viewpatient");
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
+    }
+  };
 
   return (
     <div className="w-full flex flex-col items-center bg-webgrey">
@@ -39,7 +68,7 @@ const [password, setPassword] = useState("")
           </p>
         </div>
         <div className="flex flex-col self-center justify-center items-center bg-white shadow-lg w-1/3 py-8 mt-6 mb-8 rounded-lg text-webgrey">
-          <form className="flex flex-col w-5/6 gap-6">
+          <form className="flex flex-col w-5/6 gap-6" onSubmit={handleSubmit}>
             <TextField
               id="email"
               type="email"
@@ -47,7 +76,7 @@ const [password, setPassword] = useState("")
               variant="outlined"
               required
               value={email}
-              onChange={e=>setEmail(e.target.value)}
+              onChange={handleChange}
             />
             <TextField
               type="password"
@@ -57,9 +86,11 @@ const [password, setPassword] = useState("")
               variant="outlined"
               required
               value={password}
-              onChange={e=>setPassword(e.target.value)}
+              onChange={handleChange}
             />
-            <LoginButton variant="contained">Log in</LoginButton>
+            <LoginButton type="submit" variant="contained">
+              Log in
+            </LoginButton>
             <Link
               href="#"
               underline="none"
@@ -70,21 +101,20 @@ const [password, setPassword] = useState("")
             </Link>
             <Divider>OR</Divider>
             <CreateAccountButton variant="contained" className="self-center">
-            <Link
-              href="/signup"
-              underline="none"
-              className="self-center text-webgrey"
-              color="inherit"
-            >
-              Create Account
-            </Link>
+              <Link
+                href="/signup"
+                underline="none"
+                className="self-center text-webgrey"
+                color="inherit"
+              >
+                Create Account
+              </Link>
             </CreateAccountButton>
           </form>
         </div>
       </div>
       <Footer />
     </div>
-    
   );
 };
 
@@ -116,7 +146,7 @@ const CreateAccountButton = styled(Button)(({ theme }) => ({
   paddingTop: "1rem",
   paddingBottom: "1rem",
   fontSize: "1rem",
-  width: "50%"
+  width: "50%",
 }));
 
 export default Login;

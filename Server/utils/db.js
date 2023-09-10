@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const dbURI = process.env.DB_URI + "/DocSpot"; // Modify the URI to include the database name
+const dbURI = process.env.DB_URI;
 const connectDB = async () => {
   try {
     await mongoose.connect(dbURI, {

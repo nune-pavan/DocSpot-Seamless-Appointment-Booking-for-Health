@@ -3,15 +3,20 @@ const mongoose = require("mongoose");
 const doctorSchema = new mongoose.Schema({
   name: {
     type: String,
-    default: "",
+    required: true,
+    trim: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+    match: [/^\S+@\S+\.\S+$/, "Please enter a valid email address"],
   },
   registrationNumber: {
     type: String,
     default: "",
-  },
-  email: {
-    type: String,
-    default: "",
+    trim: true,
   },
   phoneNo: {
     type: String,
@@ -20,10 +25,16 @@ const doctorSchema = new mongoose.Schema({
   address: {
     type: String,
     default: "",
+    trim: true,
   },
   profilePicture: {
     type: String,
     default: "",
+    trim: true,
+  },
+  fees: {
+    type: Number,
+    default: 0,
   },
   rating: {
     type: Number,
@@ -48,6 +59,10 @@ const doctorSchema = new mongoose.Schema({
   isAvailable: {
     type: Boolean,
     default: false,
+  },
+  appointmentsScheduled: {
+    type: [String],
+    default: [],
   },
 });
 
