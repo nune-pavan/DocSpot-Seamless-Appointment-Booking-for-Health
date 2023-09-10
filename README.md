@@ -45,13 +45,13 @@ Key features include:
 
 ## Demo
 
-| Image 1 | Image 2 |
+| SignUp Page | Login Page |
 | ------- | ------- |
 | ![Image 1](Signup.png) | ![Image 2](Login.png) |
 
-| Image 3 | Image 4 |
+| Patient Profile | Doctor Profile |
 | ------- | ------- |
-| ![Image 3](Patient Profile.png) | ![Image 4](Doctor Profile.png) |
+| ![Image 3](PatientProfile.png) | ![Image 4](DoctorProfile.png) |
 
 
 You can access a live demo of the project <a href = "#">here</a>.
