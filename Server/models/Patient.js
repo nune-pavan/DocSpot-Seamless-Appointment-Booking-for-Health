@@ -20,6 +20,10 @@ const patientSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  diseases: {
+    type: [String],
+    default: [],
+  },
   prescription: {
     type: [String],
     default: [],
