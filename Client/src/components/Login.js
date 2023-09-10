@@ -6,8 +6,9 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import Divider from "@mui/material/Divider";
-import Link from "@mui/material/Link";
+import Linke from "@mui/material/Link";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
 const Login = ({ addParticipantsProp }) => {
   const navigate = useNavigate();
@@ -105,14 +106,14 @@ const Login = ({ addParticipantsProp }) => {
             <LoginButton type="submit" variant="contained">
               Log in
             </LoginButton>
-            <Link
+            <Linke
               href="#"
               underline="none"
               className="self-center text-webgrey"
               color="inherit"
             >
               Forgot password?
-            </Link>
+            </Linke>
             <Divider>OR</Divider>
             <CreateAccountButton variant="contained" className="self-center">
               <Link

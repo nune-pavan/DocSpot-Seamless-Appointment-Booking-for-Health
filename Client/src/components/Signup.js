@@ -10,8 +10,9 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import Link from "@mui/material/Link";
+import Linke from "@mui/material/Link";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -186,13 +187,13 @@ const Signup = () => {
             <div className="flex flex-row gap-1 text-center justify-center">
               <div> Already have an account? </div>
               <div className="text-black">
-                <Link
+                <Linke
                   href="/login"
                   className="self-center text-webgrey"
                   color="inherit"
                 >
                   Login
-                </Link>
+                </Linke>
               </div>
             </div>
           </form>
