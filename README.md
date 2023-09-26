@@ -5,7 +5,7 @@
 <h1 align="center">Online Doctor Appointment System</h1>
 
 <p align="center">
-  A web-based platform for scheduling appointments with doctors near you.
+  A web-based platform for scheduling appointment with doctors near you.
 </p>
 
 ## Table of Contents
