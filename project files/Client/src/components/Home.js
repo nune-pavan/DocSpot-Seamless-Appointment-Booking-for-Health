@@ -1,8 +1,8 @@
+
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import DoctorCard from "./DoctorCard";
-
+import DoctorCard from "../components/DoctorCard";
 import { Button, TextField } from "@mui/material";
 import styled from "@emotion/styled";
 import SearchIcon from "@mui/icons-material/Search";
@@ -13,18 +13,29 @@ function Home() {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    const fetchDoctors = async () => {
-      try {
-        const response = await fetch("http://localhost:9000/api/doctors");
-        const data = await response.json();
+  const fetchDoctors = async () => {
+    try {
+      const response = await fetch("http://localhost:9000/api/doctors");
+      const data = await response.json();
+
+      // SAFELY check if data is an array
+      if (Array.isArray(data)) {
         setDoctors(data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching doctor data:", error);
+      } else {
+        console.error("Expected array but got:", data);
+        setDoctors([]); // fallback to avoid .filter crash
       }
-    };
-    fetchDoctors();
-  }, []);
+
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching doctor data:", error);
+      setDoctors([]); // fallback
+      setLoading(false);
+    }
+  };
+
+  fetchDoctors();
+}, []);
 
   if (loading) {
     return <div>Loading...</div>;

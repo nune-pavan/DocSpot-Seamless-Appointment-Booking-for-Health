@@ -1,7 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv").config();
 const connectDB = require("./utils/db");
+
 const userRoutes = require("./routes/userRoutes");
 const doctorRoutes = require("./routes/doctorRoutes");
 const patientRoutes = require("./routes/patientRoutes");
@@ -10,24 +11,26 @@ const appointmentRoutes = require("./routes/appointmentRoutes");
 const app = express();
 const PORT = process.env.PORT || 9000;
 
+// ✅ Allow only your frontend
 const corsOptions = {
   origin: "http://localhost:3000",
   credentials: true,
-  optionSuccessStatus: 200,
 };
 
-// Connect to MongoDB
+// ✅ Connect to MongoDB Atlas
 connectDB();
 
-app.use(cors());
+// ✅ Middleware
+app.use(cors(corsOptions));
 app.use(express.json());
 
-// Use doctor routes
+// ✅ API routes
 app.use("/api/users", userRoutes);
 app.use("/api/doctors", doctorRoutes);
 app.use("/api/patients", patientRoutes);
 app.use("/api/appointments", appointmentRoutes);
 
+// ✅ Start server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });

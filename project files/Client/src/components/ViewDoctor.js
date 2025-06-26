@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom"; // ✅ Include Link here
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import Navbar from "./Navbar";
@@ -14,7 +15,6 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import Footer from "./Footer";
-import { useParams } from "react-router-dom";
 
 const ViewDoctor = () => {
   const [doctorData, setDoctorData] = useState(null);
@@ -34,23 +34,22 @@ const ViewDoctor = () => {
     fetchDoctorData();
   }, [id]);
 
-  console.log(doctorData);
-
   const [alignment, setAlignment] = useState("10:00 AM - 1:00 PM");
 
   const handleChange = (event, newAlignment) => {
-    setAlignment(newAlignment);
+    if (newAlignment !== null) {
+      setAlignment(newAlignment);
+    }
   };
 
-  if (!doctorData) {
-    return <div>Loading...</div>; // You can show a loading state while fetching data
-  }
- 
+  if (!doctorData) return <div>Loading...</div>;
+
   return (
     <div className="w-full">
       <Navbar />
       <div className="w-full flex flex-col items-center bg-webgrey pt-28 pb-16">
         <div className="w-2/3 flex justify-center p-10 bg-white rounded-lg gap-8 shadow-lg">
+          {/* LEFT SIDE */}
           <div className="w-1/3 flex flex-col">
             <img
               src={doctorData.profilePicture || DocPic}
@@ -78,15 +77,14 @@ const ViewDoctor = () => {
                 <SchoolIcon />
                 <div className="flex flex-col">
                   {doctorData.education.map((edu, index) => (
-                    <p className="text-webslate mb-2" key={index}>
-                      {edu}
-                    </p>
+                    <p className="text-webslate mb-2" key={index}>{edu}</p>
                   ))}
                 </div>
               </div>
             </div>
           </div>
 
+          {/* RIGHT SIDE */}
           <div className="w-2/3">
             <div className="mb-2">
               <p className="text-webred font-regular font-IBM text-lg">
@@ -96,99 +94,72 @@ const ViewDoctor = () => {
                 {doctorData.name}
               </h1>
             </div>
+
             <div className="my-4">
-              <div className="flex">
+              <div className="flex flex-wrap gap-2">
                 {doctorData.specialization.map((spcl, index) => (
-                  <p
-                    key={index}
-                    className="font-semibold text-webslate font-IBM text-lg mr-2"
-                  >
+                  <p key={index} className="font-semibold text-webslate font-IBM text-lg">
                     {spcl}
                   </p>
                 ))}
               </div>
               <div className="flex items-center gap-2">
-                <p className="self-center">
-                  {doctorData.rating.$numberDecimal}
-                </p>
+                <p>{doctorData.rating.$numberDecimal}</p>
                 <Rating
                   name="doctor-rating"
-                  value={doctorData.rating.$numberDecimal}
-                  precision={0.1} // Allows half-star ratings
-                  readOnly // To make it read-only
-                  size="small" // You can adjust the size
+                  value={parseFloat(doctorData.rating.$numberDecimal)}
+                  precision={0.1}
+                  readOnly
+                  size="small"
                 />
               </div>
             </div>
+
             <div className="my-2">
-              <p className="font-semibold text-webslate font-IBM text-lg">
-                Available Hours -
-              </p>
-              <div>
-              </div>
-              <ul className="text-webslate font-IBM text-md list-disc">
-                <li className="ml-5">
-                {doctorData.availableHours.slice(0, 1).map((hours, index) => (
-                  <p key={index} className="font-semibold text-webslate font-IBM text-lg">
-                    {hours}
-                  </p>
+              <p className="font-semibold text-webslate font-IBM text-lg">Available Hours -</p>
+              <ul className="text-webslate font-IBM text-md list-disc ml-6">
+                {doctorData.availableHours.map((hours, index) => (
+                  <li key={index}>{hours}</li>
                 ))}
-                </li>
-                <li className="ml-5">
-                {doctorData.availableHours.slice(1, 2).map((hours, index) => (
-                  <p key={index} className="font-semibold text-webslate font-IBM text-lg">
-                    {hours}
-                  </p>
-                ))}
-                </li>
               </ul>
             </div>
+
             <div className="my-2">
-              <p className="font-semibold text-webslate font-IBM text-lg">
-                Fees
-              </p>
+              <p className="font-semibold text-webslate font-IBM text-lg">Fees</p>
               <p className="text-webslate font-IBM text-lg">
                 ₹ {doctorData.fees.$numberDecimal}
               </p>
             </div>
+
             <div className="my-2">
-              <p className="text-webred font-regular font-IBM text-lg">
-                Choose Slot-
-              </p>
+              <p className="text-webred font-regular font-IBM text-lg">Choose Slot -</p>
               <div className="flex items-center gap-2 my-3">
-                <p className="font-semibold text-webslate font-IBM text-lg">
-                  Date -
-                </p>
+                <p className="font-semibold text-webslate font-IBM text-lg">Date -</p>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker />
                 </LocalizationProvider>
               </div>
               <div className="flex items-center gap-2 my-3">
-                <p className="font-semibold text-webslate font-IBM text-lg">
-                  Time -
-                </p>
+                <p className="font-semibold text-webslate font-IBM text-lg">Time -</p>
                 <ToggleButtonGroup
                   color="primary"
                   value={alignment}
                   exclusive
                   onChange={handleChange}
-                  aria-label="Slot"
                 >
-                  <ToggleButton value="10:00AM - 1:00PM">
-                    10:00AM - 1:00PM
-                  </ToggleButton>
-                  <ToggleButton value="5:00PM - 10:00PM">
-                    5:00PM - 10:00PM
-                  </ToggleButton>
+                  <ToggleButton value="10:00AM - 1:00PM">10AM - 1PM</ToggleButton>
+                  <ToggleButton value="5:00PM - 10:00PM">5PM - 10PM</ToggleButton>
                 </ToggleButtonGroup>
               </div>
 
-              <BookButton variant="contained">Book Appointment</BookButton>
+              {/* ✅ Link to booking page */}
+              <Link to={`/book-appointment/${doctorData._id}`}>
+                <BookButton variant="contained">Book Appointment</BookButton>
+              </Link>
             </div>
+
             <div className="mt-4 mb-2">
-              <p className="font-semibold text-webslate font-IBM text-lg">
-                About -
-              </p>
+              <p className="font-semibold text-webslate font-IBM text-lg">About -</p>
               <p className="text-webslate font-IBM py-2 text-justify">
                 {doctorData.about}
               </p>
@@ -201,7 +172,7 @@ const ViewDoctor = () => {
   );
 };
 
-const BookButton = styled(Button)(({ theme }) => ({
+const BookButton = styled(Button)({
   backgroundColor: "#D90429",
   borderRadius: "15px",
   "&:hover": {
@@ -212,11 +183,8 @@ const BookButton = styled(Button)(({ theme }) => ({
   },
   textTransform: "none",
   fontFamily: "IBM Plex Sans",
-  paddingTop: "9.5px",
-  paddingBottom: "9.5px",
-  paddingLeft: "1.4rem",
-  paddingRight: "1.4rem",
+  padding: "10px 22px",
   fontSize: "1rem",
-}));
+});
 
 export default ViewDoctor;
