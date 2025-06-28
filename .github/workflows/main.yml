@@ -1,4 +1,3 @@
-# .github/workflows/main.yml
 name: Node.js CI
 
 on:
@@ -22,22 +21,22 @@ jobs:
       # -------- FRONTEND --------
       - name: Install Frontend Dependencies
         run: npm install
-        working-directory: "./project files/Client"  # ✅ FIXED
+        working-directory: "./project files/Client"   # ✅ FIXED
 
       - name: Build Frontend
         run: npm run build
-        working-directory: "./project files/Client"  # ✅ FIXED
+        working-directory: "./project files/Client"   # ✅ FIXED
         env:
           CI: false
 
       # -------- BACKEND --------
       - name: Install Backend Dependencies
         run: npm install
-        working-directory: "./project files/Server"  # ✅ FIXED
+        working-directory: "./project files/Server"   # ✅ FIXED
 
       - name: Check MongoDB Connection
         run: npm run check
-        working-directory: "./project files/Server"  # ✅ FIXED
+        working-directory: "./project files/Server"   # ✅ FIXED
         env:
           DB_URI: ${{ secrets.DB_URI }}
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
