@@ -27,7 +27,7 @@ jobs:
         run: npm run build
         working-directory: "./project files/Client"
         env:
-          CI: false  # prevents warnings from failing the build
+          CI: false
 
       # -------- BACKEND --------
       - name: Install Backend Dependencies
@@ -39,3 +39,5 @@ jobs:
         working-directory: "./project files/Server"
         env:
           DB_URI: ${{ secrets.DB_URI }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          PORT: ${{ secrets.PORT }}
