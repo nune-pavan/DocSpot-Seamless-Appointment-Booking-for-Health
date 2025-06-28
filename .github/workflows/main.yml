@@ -34,10 +34,8 @@ jobs:
         run: npm install
         working-directory: "./project files/Server"
 
-      - name: Start Backend
-        run: node server.js
+      - name: Check MongoDB Connection
+        run: npm run check
         working-directory: "./project files/Server"
         env:
           DB_URI: ${{ secrets.DB_URI }}
-          JWT_SECRET: ${{ secrets.JWT_SECRET }}
-          PORT: ${{ secrets.PORT }}
