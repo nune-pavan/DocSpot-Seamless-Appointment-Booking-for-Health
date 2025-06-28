@@ -18,37 +18,26 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install Dependencies
+      # Frontend (React) Setup
+      - name: Install Frontend Dependencies
         run: npm install
-        working-directory: ./Client # Specify the client directory
+        working-directory: ./project files/Client
 
-      - name: Build
+      - name: Build Frontend
         run: npm run build
-        working-directory: ./Client # Specify the client directory
+        working-directory: ./project files/Client
 
-      - name: Start
-        run: npm run start
-        working-directory: ./Client # Specify the client directory
+      # Backend (Node.js + Express) Setup
+      - name: Install Backend Dependencies
+        run: npm install
+        working-directory: ./project files/Server
 
-      - name: Set up Firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only functions
+      - name: Run Backend
+        run: npm start
+        working-directory: ./project files/Server
 
+      # Firebase deploy (optional)
       - name: Deploy to Firebase Hosting
         run: |
-          cd client
-          npm install
           npm run deploy:hosting
-
-      - name: Set up MongoDB
-        uses: docker://mongo:latest
-
-      - name: Set up Express and Node
-        run: |
-          cd server
-          npm install
-          npm run build
-          npm start
-
-          
+        working-directory: ./project files/Client
