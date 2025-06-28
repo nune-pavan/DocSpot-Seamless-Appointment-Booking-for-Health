@@ -49,6 +49,11 @@ PORT=9000
 DB_URI=mongodb+srv://DocSpot:Docspot#143@cluster0.rklb1sq.mongodb.net/DocSpotDB?retryWrites=true&w=majority
 JWT_SECRET=yourSecretKey
 
+## 🌐 Frontend Environment Variables (Create `.env` inside `project_files/Client`)
+REACT_APP_API_BASE_URL=http://localhost:9000/api
+This value points your React frontend to the backend API.
+
+
 
 🛠️ Run Locally
 1. Clone the Repository
