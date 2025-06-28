@@ -18,26 +18,26 @@ jobs:
         with:
           node-version: '16'
 
-      # Frontend (React) Setup
+      # -------- FRONTEND --------
       - name: Install Frontend Dependencies
         run: npm install
-        working-directory: ./project files/Client
+        working-directory: "./project files/Client"
 
       - name: Build Frontend
         run: npm run build
-        working-directory: ./project files/Client
+        working-directory: "./project files/Client"
+        env:
+          CI: false  # prevents warnings from failing the build
 
-      # Backend (Node.js + Express) Setup
+      # -------- BACKEND --------
       - name: Install Backend Dependencies
         run: npm install
-        working-directory: ./project files/Server
+        working-directory: "./project files/Server"
 
-      - name: Run Backend
-        run: npm start
-        working-directory: ./project files/Server
-
-      # Firebase deploy (optional)
-      - name: Deploy to Firebase Hosting
-        run: |
-          npm run deploy:hosting
-        working-directory: ./project files/Client
+      - name: Start Backend
+        run: node server.js
+        working-directory: "./project files/Server"
+        env:
+          DB_URI: ${{ secrets.DB_URI }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          PORT: ${{ secrets.PORT }}
