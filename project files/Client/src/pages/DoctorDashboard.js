@@ -6,7 +6,7 @@ const dummyAppointments = [
     name: "Rahul Sharma",
     date: "2025-06-26 10:00",
     phone: "9876543210",
-    document: "doc-link-1",
+    document: "https://example.com/doc-link-1",
     status: "pending",
   },
   {
@@ -22,7 +22,7 @@ const dummyAppointments = [
     name: "Amit Singh",
     date: "2025-06-28 12:00",
     phone: "9000000000",
-    document: "doc-link-3",
+    document: "https://example.com/doc-link-3",
     status: "pending",
   },
   {
@@ -38,7 +38,7 @@ const dummyAppointments = [
     name: "Karan Mehta",
     date: "2025-06-29 17:00",
     phone: "9871234567",
-    document: "doc-link-5",
+    document: "https://example.com/doc-link-5",
     status: "pending",
   },
   {
@@ -54,7 +54,7 @@ const dummyAppointments = [
     name: "Rohit Kumar",
     date: "2025-07-02 11:30",
     phone: "9834567890",
-    document: "doc-link-7",
+    document: "https://example.com/doc-link-7",
     status: "pending",
   },
   {
@@ -105,7 +105,12 @@ const DoctorDashboard = () => {
                 <td className="p-3">{appt.phone}</td>
                 <td className="p-3">
                   {appt.document ? (
-                    <a href="#" className="text-blue-600 underline">
+                    <a
+                      href={appt.document}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 underline"
+                    >
                       View Document
                     </a>
                   ) : (
