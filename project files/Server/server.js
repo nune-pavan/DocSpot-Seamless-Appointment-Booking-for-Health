@@ -11,26 +11,29 @@ const appointmentRoutes = require("./routes/appointmentRoutes");
 const app = express();
 const PORT = process.env.PORT || 9000;
 
-// ✅ Allow only your frontend
+// ✅ Optional Debug: Show DB_URI in CI logs (remove in production)
+console.log("✅ DB_URI from environment:", process.env.DB_URI ? "loaded" : "missing");
+
+// ✅ Connect to MongoDB using URI from secrets
+connectDB(process.env.DB_URI);
+
+// ✅ CORS setup (adjust origin for production if needed)
 const corsOptions = {
   origin: "http://localhost:3000",
   credentials: true,
 };
 
-// ✅ Connect to MongoDB Atlas with DB_URI from env
-connectDB(process.env.DB_URI);
-
 // ✅ Middleware
 app.use(cors(corsOptions));
 app.use(express.json());
 
-// ✅ API routes
+// ✅ Routes
 app.use("/api/users", userRoutes);
 app.use("/api/doctors", doctorRoutes);
 app.use("/api/patients", patientRoutes);
 app.use("/api/appointments", appointmentRoutes);
 
-// ✅ Start server
+// ✅ Start the server
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
