@@ -22,11 +22,11 @@ jobs:
       # -------- FRONTEND --------
       - name: Install Frontend Dependencies
         run: npm install
-        working-directory: ./project_files/Client
+        working-directory: ./project files/Client
 
       - name: Build Frontend
         run: npm run build
-        working-directory: ./project_files/Client
+        working-directory: ./project files/Client
         env:
           CI: false
 
