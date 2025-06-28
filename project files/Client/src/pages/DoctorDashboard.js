@@ -104,7 +104,7 @@ const DoctorDashboard = () => {
                 <td className="p-3">{appt.date}</td>
                 <td className="p-3">{appt.phone}</td>
                 <td className="p-3">
-                  {appt.document ? (
+                  {appt.document && appt.document.trim() !== "" ? (
                     <a
                       href={appt.document}
                       target="_blank"
