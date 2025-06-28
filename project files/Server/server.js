@@ -17,8 +17,8 @@ const corsOptions = {
   credentials: true,
 };
 
-// ✅ Connect to MongoDB Atlas
-connectDB();
+// ✅ Connect to MongoDB Atlas with DB_URI from env
+connectDB(process.env.DB_URI);
 
 // ✅ Middleware
 app.use(cors(corsOptions));
